@@ -2,15 +2,11 @@
 #include<math.h>
 using namespace std;
 
-bool isSqrtInt (float x) {
-	return ((x - floor(x)) == 0);
-}
-
 int isAPairExisted(int n, int b, int m) {
-	float a = sqrt(n - b);
+	int a = sqrt(n - b);
 	int bSquare = pow(b, 2);
 
-	return (isSqrtInt(a) && bSquare == (m - a));
+	return ((a * a == n - b) && bSquare == (m - a));
 }
 
 void findSuitablePairs(int m, int n) {
