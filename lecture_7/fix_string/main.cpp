@@ -7,23 +7,35 @@ using namespace std;
  * create string a[] to store word
  * filter character in string s and put into string a
  * print words from string a
+ *
+ * Approach 2: use a flag to mark space
+ * create a variable to keep track of string len. This var also handles the spaces before the first word
+ *
 */
 
 int main () {
   string s;
   getline (cin, s);
-  char a[1000];
-  int space = 0;
+  string ans;
+  int space = false;
+  int stringLen = 0;
   for (size_t i = 0; i < s.length(); i++) {
-    if ((s[i] >= 65 && s[i] <= 90) || (s[i] >= 97 && s[i] <= 122) || (s[i] == 32 && s[i - 1] != 32 && i > 0)) {
-      a[space] = s[i];
-      space++;
+    if (s[i] == 32) {
+      if (stringLen > 0)
+      space = true;
+    } else {
+      if (space) {
+        ans = ans + " " + s[i];
+        space = false;
+        stringLen += 2;
+      } else {
+        ans += s[i];
+        stringLen++;
+      }
     }
   }
 
-  for (int i = 0; i < space; i++) {
-    if ((a[i] >= 65 && a[i] <= 90) || (a[i] >= 97 && a[i] <= 122) || (a[i] == 32 && i != space - 1))
-    cout << a[i];
-  }
+  cout << ans;
+
   return 0;
 }
