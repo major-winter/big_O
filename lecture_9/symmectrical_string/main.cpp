@@ -1,12 +1,12 @@
 #include<iostream>
 using namespace std;
 
-string reversedString(string s, string &ans) {
-  if (s.length() == 1) return ans += s[0];
+string reversedString(string &s, string &ans, int &strLen) {
+  if (strLen == 1) return ans += s[0];
   else {
-    ans += s[s.length() - 1];
-    s = s.substr(0, s.length() - 1);
-    return reversedString(s, ans);
+    ans += s[strLen - 1];
+    strLen--;
+    return reversedString(s, ans, strLen);
   }
 }
 
@@ -16,7 +16,7 @@ int main () {
   int n;
   cin >> n;
   cin >> s;
-  reversedString(s, ans);
+  reversedString(s, ans, n);
   if (ans == s) cout << "YES";
   else cout << "NO";
   return 0;
