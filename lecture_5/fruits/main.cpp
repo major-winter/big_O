@@ -1,7 +1,7 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main () {
+int main() {
   int a[5000];
   int o[5000];
   int n;
@@ -12,7 +12,8 @@ int main () {
 
   for (int i = 0; i < n; i++) {
     cin >> a[i] >> o[i];
-    if (a[i] == maxApples) count++;
+    if (a[i] == maxApples)
+      count++;
     if (a[i] > maxApples) {
       maxApples = a[i];
       ans = i + 1;
@@ -20,7 +21,8 @@ int main () {
     }
   }
 
-  if (count < 2) cout << ans;
+  if (count < 2)
+    cout << ans;
   else {
     for (int i = 0; i < n; i++) {
       if (a[i] == maxApples) {
